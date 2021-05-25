@@ -35,6 +35,7 @@ app.use("/api/sucursales", sucursalesRouter)
 // ---------------------------------------------------------------------
 app.use((err, req, res, next) => {
 	console.log(err)
+	res.send(err)
 })
 
 const PORT = process.env.PORT
