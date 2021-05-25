@@ -77,6 +77,10 @@ sucursalesRouter.get("/", async (req, res) => {
 	res.status(200).json(sucursalesToReturn).end()
 })
 
-sucursalesRouter.get("/:id", async (req, res) => {})
+sucursalesRouter.get("/:id", async (req, res) => {
+	const { id } = req.params
+	const result = await Info.find({ sucursal: id })
+	res.json(result)
+})
 
 module.exports = sucursalesRouter

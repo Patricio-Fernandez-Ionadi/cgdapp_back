@@ -1,10 +1,16 @@
+require("dotenv").config()
+require("./connection")
 const express = require("express")
 const app = express()
 const cors = require("cors")
 
 // ---------------------------------------------------------------------
-// SCHEMA
-const Info = require("./models/info")
+app.use(cors())
+app.use(express.json())
+
+// ---------------------------------------------------------------------
+// MODELS
+// const Info = require("./models/info")
 // const User = require("./models/user")
 
 // ---------------------------------------------------------------------
@@ -12,9 +18,6 @@ const Info = require("./models/info")
 const infoRouter = require("./controllers/info")
 const sucursalesRouter = require("./controllers/sucursales")
 
-// ---------------------------------------------------------------------
-app.use(cors())
-app.use(express.json())
 // ---------------------------------------------------------------------
 
 app.use("/api", infoRouter)
@@ -36,7 +39,5 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
-	console.log(`Server running on port: ${PORT}`)
+	console.log(`Server running on port ${PORT}`)
 })
-
-module.exports = Info

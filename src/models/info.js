@@ -4,6 +4,9 @@ const infoSchema = new Schema({
 	sucursal: String,
 	fecha: String,
 	factura: String,
+	proveedor: String,
+	rubro: Number,
+	mes: String,
 })
 
 /* infoSchema.set("toJSON", {
