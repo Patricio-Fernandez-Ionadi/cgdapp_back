@@ -161,6 +161,9 @@ sucursalesRouter.get("/", async (req, res) => {
 			case "CC6801":
 				sucursalName = "El Bolson"
 				break
+			case "CC6901":
+				sucursalName = "Venado Tuerto"
+				break
 			case "CC7001":
 				sucursalName = "Pico Truncado"
 				break
