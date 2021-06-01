@@ -11,7 +11,7 @@ app.use(express.json())
 // ---------------------------------------------------------------------
 // MODELS
 // const Info = require("./models/info")
-// const User = require("./models/user")
+const User = require("./models/user")
 
 // ---------------------------------------------------------------------
 // Router
@@ -25,17 +25,24 @@ app.use("/api/sucursales", sucursalesRouter)
 
 // ---------------------------------------------------------------------
 // LOGIN
-/* app.get("/login", async (req, res) => {
-	// const recivedUser = req.body
-	// console.log(recivedUser)
-	const usersSaved = await User.find({})
-	res.json(usersSaved)
-}) */
+app.post("/login", async (req, res) => {
+	const recivedUser = req.body.user
+	const recivedPass = req.body.pass
+	const userSaved = await User.find({ user: recivedUser, pass: recivedPass })
+
+	if (userSaved[0]) {
+		// console.log("existe el usuario")
+		res.status(200).send(userSaved)
+	} else {
+		res.status(404).end()
+		// console.log("no existe el usuario")
+	}
+})
 
 // ---------------------------------------------------------------------
 app.use((err, req, res, next) => {
 	console.log(err)
-	res.send(err)
+	res.status(404).send(err)
 })
 
 const PORT = process.env.PORT
