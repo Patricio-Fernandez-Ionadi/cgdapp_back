@@ -17,27 +17,21 @@ const User = require("./models/user")
 // Router
 const infoRouter = require("./controllers/info")
 const sucursalesRouter = require("./controllers/sucursales")
+const loginRouter = require("./controllers/login.controller")
+const usersRouter = require("./controllers/users.controller")
 
 // ---------------------------------------------------------------------
-
+// All Info
 app.use("/api", infoRouter)
-app.use("/api/sucursales", sucursalesRouter)
-
 // ---------------------------------------------------------------------
-// LOGIN
-app.post("/login", async (req, res) => {
-	const recivedUser = req.body.user
-	const recivedPass = req.body.pass
-	const userSaved = await User.find({ user: recivedUser, pass: recivedPass })
-
-	if (userSaved[0]) {
-		// console.log("existe el usuario")
-		res.status(200).send(userSaved)
-	} else {
-		res.status(404).end()
-		// console.log("no existe el usuario")
-	}
-})
+// Sucursales
+app.use("/api/sucursales", sucursalesRouter)
+// ---------------------------------------------------------------------
+// Login
+app.use("/login", loginRouter)
+// ---------------------------------------------------------------------
+// Users
+app.use("/api/users", usersRouter)
 
 // ---------------------------------------------------------------------
 app.use((err, req, res, next) => {

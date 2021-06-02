@@ -2,7 +2,6 @@ const infoRouter = require("express").Router()
 
 const Info = require("../models/info")
 
-// la raiz del path en este punto es la especificada en el middleware que se esté usando en app
 infoRouter.post("/", async (req, res, next) => {
 	const info = req.body
 

@@ -6,9 +6,19 @@ const userSchema = new Schema({
 	role: String,
 	name: String,
 	lastName: String,
-	birth: Date,
+	date: Date,
+	gender: String,
+	sector: String,
+	sucursal: String,
+	age: Number,
+	_facturas: Array,
+	email: String,
+	_secQuest: String,
+	_secAsk: String,
+	nacionalidad: String,
 })
 
 const User = model("users", userSchema)
+const UserCreation = model("userpendings", userSchema)
 
-module.exports = User
+module.exports = { User, UserCreation }
