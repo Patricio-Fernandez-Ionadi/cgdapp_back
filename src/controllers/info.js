@@ -29,7 +29,7 @@ infoRouter.get("/", async (req, res) => {
 	res.json(infoToShow)
 })
 
-infoRouter.delete("/", async (req, res) => {
+infoRouter.delete("/deleteInformation/:_id", async (req, res) => {
 	// const id = Number(req.params.id)
 	const body = req.body
 	const id = body._id
