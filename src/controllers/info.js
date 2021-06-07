@@ -2,7 +2,7 @@ const infoRouter = require("express").Router()
 
 const Info = require("../models/info")
 
-infoRouter.post("/", async (req, res, next) => {
+infoRouter.post("/", (req, res, next) => {
 	const info = req.body
 
 	if (!info) {
@@ -13,28 +13,34 @@ infoRouter.post("/", async (req, res, next) => {
 		sucursal: info.sucursal,
 		fecha: info.fecha,
 		factura: info.factura,
+		dia: info.dia,
+		neto: info.neto,
+		id: info.id,
+		mes: info.mes,
+		proveedor: info.proveedor,
+		detalle: info.detalle,
+		rubro: info.rubro,
+		apertura: info.apertura || null,
 	})
 
-	try {
-		const savedInfo = await infoToAdd.save()
-		res.json(savedInfo)
-	} catch (err) {
-		next(err)
-	}
+	infoToAdd
+		.save()
+		.then((savedInfo) => res.json(savedInfo))
+		.catch(next)
 })
 
-infoRouter.get("/", async (req, res) => {
-	// Info.find({}).then((i) => res.json(i))
-	const infoToShow = await Info.find({})
-	res.json(infoToShow)
+infoRouter.get("/", (req, res, next) => {
+	Info.find({})
+		.then((i) => res.json(i))
+		.catch(next)
 })
 
-infoRouter.delete("/deleteInformation", async (req, res) => {
-	// const id = Number(req.params.id)
+infoRouter.delete("/deleteInformation", (req, res, next) => {
 	const body = req.body
 	const id = body._id
-	await Info.findByIdAndDelete(id)
-	res.status(204).end()
+	Info.findByIdAndDelete(id)
+		.then(() => res.status(204).end())
+		.catch(next)
 })
 
 module.exports = infoRouter

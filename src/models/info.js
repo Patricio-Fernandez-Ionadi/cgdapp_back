@@ -7,6 +7,10 @@ const infoSchema = new Schema({
 	proveedor: String,
 	rubro: Number,
 	mes: String,
+	dia: String,
+	neto: String,
+	id: String,
+	detalle: String,
 })
 
 /* infoSchema.set("toJSON", {
