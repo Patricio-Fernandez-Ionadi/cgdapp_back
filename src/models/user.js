@@ -16,6 +16,7 @@ const userSchema = new Schema({
 	_secQuest: String,
 	_secAsk: String,
 	nacionalidad: String,
+	isOnline: Boolean,
 })
 
 const User = model("users", userSchema)

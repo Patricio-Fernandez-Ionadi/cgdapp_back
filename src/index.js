@@ -17,7 +17,7 @@ app.use(express.json())
 // Router
 const infoRouter = require("./controllers/info")
 const sucursalesRouter = require("./controllers/sucursales")
-const loginRouter = require("./controllers/login.controller")
+const sesionRouter = require("./controllers/sesion.controller")
 const usersRouter = require("./controllers/users.controller")
 
 // ---------------------------------------------------------------------
@@ -27,8 +27,8 @@ app.use("/api", infoRouter)
 // Sucursales
 app.use("/api/sucursales", sucursalesRouter)
 // ---------------------------------------------------------------------
-// Login
-app.use("/login", loginRouter)
+// Sesion
+app.use("/sesion", sesionRouter)
 // ---------------------------------------------------------------------
 // Users
 app.use("/api/users", usersRouter)
