@@ -7,7 +7,7 @@ usersRouter.get("/", (req, res, next) => {
 		.catch(next)
 })
 
-usersRouter.post("/admin/control/edit", (req, res, next) => {
+usersRouter.post("/control/edit", (req, res, next) => {
 	const userIdToChange = req.body.userToChange._id
 	const newValues = req.body.newValues // {...nuevos valores (existentes)}
 	// actualizar valores existentes de un usuario-------------------------
@@ -26,25 +26,7 @@ usersRouter.post("/admin/control/edit", (req, res, next) => {
 		})
 })
 
-usersRouter.post("/register", (req, res, next) => {
-	const userSolicitud = req.body
-	console.log(userSolicitud)
-
-	User.find({ email: userSolicitud.email }).then((isExistentUser) => {
-		if ([isExistentUser]) {
-			return res.status(406)
-		} else {
-			const userToAdd = new UserCreation(userSolicitud)
-
-			userToAdd
-				.save()
-				.then((savedUserToAdd) => res.status(201).json(savedUserToAdd).end())
-				.catch(next)
-		}
-	})
-})
-
-usersRouter.get("/register", (req, res, next) => {
+usersRouter.get("/control/userRequest", (req, res, next) => {
 	UserCreation.find({})
 		.then((pendingUsers) => res.json(pendingUsers))
 		.catch(next)

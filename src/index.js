@@ -17,15 +17,19 @@ const usersRouter = require("./controllers/users.controller")
 
 // All Info
 app.use("/api", infoRouter)
+// http://localhost:3001/api
 // ----------------------------------
 // Sucursales
-app.use("/api/sucursales", sucursalesRouter)
+app.use("/sucursales", sucursalesRouter)
+// http://localhost:3001/sucursales
 // ----------------------------------
 // Sesion
 app.use("/sesion", sesionRouter)
+// http://localhost:3001/sesion
 // ----------------------------------
 // Users
-app.use("/api/users", usersRouter)
+app.use("/admin", usersRouter)
+// http://localhost:3001/admin
 
 // ---------------------------------------------------------------------
 // ERROR HANDLING
