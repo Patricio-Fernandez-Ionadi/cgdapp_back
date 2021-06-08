@@ -5,8 +5,9 @@ const { User } = require("../models/user")
 sesionRouter.get("/", async (req, res, next) => {
 	const usersOnline = await User.find({ isOnline: true })
 	const usersOffline = await User.find({ isOnline: false })
+	const allUsers = await User.find({})
 
-	const sesions = [usersOnline, usersOffline]
+	const sesions = [allUsers, usersOnline, usersOffline]
 
 	try {
 		res.json(sesions).end()
