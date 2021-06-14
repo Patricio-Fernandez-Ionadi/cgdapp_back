@@ -8,7 +8,7 @@ const infoSchema = new Schema({
 	rubro: Number,
 	mes: String,
 	dia: String,
-	neto: String,
+	neto: Number,
 	id: String,
 	detalle: String,
 })
